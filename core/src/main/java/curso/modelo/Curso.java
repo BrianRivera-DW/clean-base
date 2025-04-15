@@ -1,5 +1,8 @@
 package curso.modelo;
 
+import curso.exception.ExceptionCamposObligatorios;
+import curso.exception.ExceptionFechaCierreIncorrecta;
+
 import java.time.LocalDate;
 
 public class Curso {
@@ -8,6 +11,13 @@ public class Curso {
     private Nivel nivel;
 
     private Curso(String nombre, LocalDate fechaInicio, Nivel nivel) {
+        LocalDate fechaActual = LocalDate.now();
+        if(nombre==null || nombre.trim().isEmpty() || fechaInicio==null || nivel==null){
+            throw new ExceptionCamposObligatorios("Error ,los campos no puede estar vacio");
+        }
+        if(fechaInicio.isBefore(fechaActual)){
+            throw new ExceptionFechaCierreIncorrecta("Error ,la fecha de cierre no puede ser anterior a la fecha Actual");
+        }
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
         this.nivel = nivel;

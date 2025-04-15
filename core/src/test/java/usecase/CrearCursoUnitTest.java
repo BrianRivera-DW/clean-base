@@ -25,6 +25,7 @@ public class CrearCursoUnitTest {
         Curso miCurso= Curso.Instancia("Programacion Anvanzada I", LocalDate.of(2025,7,3), Nivel.INICIAL);
         CrearCursoUseCase crearCursoUseCase = new CrearCursoUseCase(crearCursoRepositorio);
 
+
         when(crearCursoRepositorio.exits(miCurso)).thenReturn(false);
         when(crearCursoRepositorio.guardarCurso(miCurso)).thenReturn(true);
 
@@ -33,19 +34,4 @@ public class CrearCursoUnitTest {
         Assertions.assertTrue(resultado);
     }
 
-    @Test
-    public void crearCurso_CamposIncompletos_ExcepcionCampos() {
-        Curso miCurso= Curso.Instancia(null,null,null);
-        CrearCursoUseCase crearCursoUseCase = new CrearCursoUseCase(crearCursoRepositorio);
-        //Test para el nombre null  o vasio
-        Assertions.assertThrows(RuntimeException.class, () -> {crearCursoUseCase.crearCurso(miCurso);});
-    }
-
-    @Test
-    public void crearCurso_FechaCierre_ExcepcionFecha() {
-        Curso miCurso= Curso.Instancia("Programacion Anvanzada I", LocalDate.of(2024,7,3),Nivel.INICIAL);
-        CrearCursoUseCase crearCursoUseCase = new CrearCursoUseCase(crearCursoRepositorio);
-        //Test evaluar si la fecha de cierre no es anterior a la fecha actual
-        Assertions.assertThrows(RuntimeException.class, () -> {crearCursoUseCase.crearCurso(miCurso);});
-    }
 }

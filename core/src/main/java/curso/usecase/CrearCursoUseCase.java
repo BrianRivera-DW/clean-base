@@ -16,16 +16,8 @@ public class CrearCursoUseCase implements ICrearCursoInput {
 
     @Override
     public boolean crearCurso(Curso curso) {
-        LocalDate fechaActual = LocalDate.now();
-        if(curso.getNombre()==null || curso.getNombre().trim().isEmpty() || curso.getFechaInicio()==null || curso.getNivel()==null){
-            throw new RuntimeException("Error ,los campos no puede estar vacio");
-        }
-        if(curso.getFechaInicio().isBefore(fechaActual)){
-            throw new RuntimeException("Error ,la fecha de cierre no puede ser anterior");
-        }
         if(!crearCursoRepositorio.exits(curso)){
             return crearCursoRepositorio.guardarCurso(curso);
-
         }
         return false;
     }
