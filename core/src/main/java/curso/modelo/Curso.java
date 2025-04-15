@@ -21,6 +21,10 @@ public class Curso {
         return nombre;
     }
 
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
     public Nivel getNivel() {
         return nivel;
     }
