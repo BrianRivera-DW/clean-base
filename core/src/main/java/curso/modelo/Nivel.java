@@ -1,5 +1,5 @@
 package curso.modelo;
 
 public enum Nivel {
-    INICIAL,MEDIANO,AVANZADO;
+    INICIAL,MEDIO,AVANZADO;
 }

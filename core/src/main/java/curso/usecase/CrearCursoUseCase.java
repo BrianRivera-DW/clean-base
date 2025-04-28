@@ -1,10 +1,10 @@
 package curso.usecase;
 
+import curso.exception.ExceptionErrorAlGuardarCurso;
+import curso.exception.ExceptionExisteCurso;
 import curso.modelo.Curso;
-import curso.output.ICrearCursoInput;
+import curso.input.ICrearCursoInput;
 import curso.repositorio.ICrearCursoRepositorio;
-
-import java.time.LocalDate;
 
 public class CrearCursoUseCase implements ICrearCursoInput {
 
@@ -15,10 +15,15 @@ public class CrearCursoUseCase implements ICrearCursoInput {
     }
 
     @Override
-    public boolean crearCurso(Curso curso) {
-        if(!crearCursoRepositorio.exits(curso)){
-            return crearCursoRepositorio.guardarCurso(curso);
+    public boolean crearCurso(Curso curso) throws ExceptionExisteCurso, ExceptionErrorAlGuardarCurso {
+
+        if(crearCursoRepositorio.existe(curso)){
+            throw new ExceptionExisteCurso();
         }
-        return false;
+        if(!crearCursoRepositorio.guardarCurso(curso)){
+            throw new ExceptionErrorAlGuardarCurso();
+        }
+
+        return crearCursoRepositorio.guardarCurso(curso);
     }
 }

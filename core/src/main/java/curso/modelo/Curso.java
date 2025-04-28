@@ -7,19 +7,19 @@ import java.time.LocalDate;
 
 public class Curso {
     private String nombre;
-    private LocalDate fechaInicio;
+    private LocalDate fechaCierreInscripcion;
     private Nivel nivel;
 
-    private Curso(String nombre, LocalDate fechaInicio, Nivel nivel) {
+    private Curso(String nombre, LocalDate fechaCierreInscripcion, Nivel nivel) {
         LocalDate fechaActual = LocalDate.now();
-        if(nombre==null || nombre.trim().isEmpty() || fechaInicio==null || nivel==null){
-            throw new ExceptionCamposObligatorios("Error ,los campos no puede estar vacio");
+        if(nombre==null || nombre.trim().isEmpty() || fechaCierreInscripcion==null || nivel==null){
+            throw new ExceptionCamposObligatorios("Error, los campos no puede estar vacio");
         }
-        if(fechaInicio.isBefore(fechaActual)){
-            throw new ExceptionFechaCierreIncorrecta("Error ,la fecha de cierre no puede ser anterior a la fecha Actual");
+        if(fechaCierreInscripcion.isBefore(fechaActual)){
+            throw new ExceptionFechaCierreIncorrecta("Error, la fecha de cierre no puede ser anterior a la fecha Actual");
         }
         this.nombre = nombre;
-        this.fechaInicio = fechaInicio;
+        this.fechaCierreInscripcion = fechaCierreInscripcion;
         this.nivel = nivel;
     }
 
@@ -32,7 +32,7 @@ public class Curso {
     }
 
     public LocalDate getFechaInicio() {
-        return fechaInicio;
+        return fechaCierreInscripcion;
     }
 
     public Nivel getNivel() {
