@@ -22,8 +22,8 @@ public class CrearCursoUseCase implements ICrearCursoInput {
         }
         if(!crearCursoRepositorio.guardarCurso(curso)){
             throw new ExceptionErrorAlGuardarCurso();
+        }else{
+            return true;
         }
-
-        return crearCursoRepositorio.guardarCurso(curso);
     }
 }

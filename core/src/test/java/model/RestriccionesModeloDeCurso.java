@@ -13,12 +13,20 @@ public class RestriccionesModeloDeCurso {
 
 
     @Test
-    public void crearCurso_CamposIncompletos_ExcepcionCampos() {
+    public void crearCurso_CamposIncompletosNull_ExcepcionCampos() {
 
         //Test para el nombre null  o vació
         RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> {Curso miCurso= Curso.Instancia(null,null,null);});
         Assertions.assertEquals("Error, los campos no puede estar vacio", exception.getMessage());
 
+    }
+
+    @Test
+    public void crearCurso_CamposNombreStringEnBlanco_ExcepcionCampos() {
+
+        //Cadenas de string en blanco
+        RuntimeException exception= Assertions.assertThrows(RuntimeException.class, () -> {Curso miCurso= Curso.Instancia(" ",null,null);});
+        Assertions.assertEquals("Error, los campos no puede estar vacio", exception.getMessage());
     }
 
     @Test
