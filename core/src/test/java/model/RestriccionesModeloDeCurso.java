@@ -2,8 +2,6 @@ package model;
 
 import curso.modelo.Curso;
 import curso.modelo.Nivel;
-import curso.repositorio.ICrearCursoRepositorio;
-import curso.usecase.CrearCursoUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

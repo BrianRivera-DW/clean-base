@@ -1,14 +1,12 @@
 package curso.usecase;
 
-import curso.exception.ExceptionCamposObligatorios;
+
 import curso.exception.ExceptionErrorAlGuardarCurso;
 import curso.exception.ExceptionExisteCurso;
-import curso.exception.ExceptionFechaCierreIncorrecta;
 import curso.modelo.Curso;
 import curso.input.ICrearCursoInput;
 import curso.repositorio.ICrearCursoRepositorio;
 
-import java.time.LocalDate;
 
 public class CrearCursoUseCase implements ICrearCursoInput {
 
