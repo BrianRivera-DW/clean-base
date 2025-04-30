@@ -24,7 +24,7 @@ public class CrearCursoUnitTest {
 
     @Test
     public void crearCurso_CursoNoExistente_CursoCreado() throws ExceptionExisteCurso, ExceptionErrorAlGuardarCurso {
-        Curso miCurso= Curso.Instancia("Programacion Anvanzada I", LocalDate.of(2030,7,3), Nivel.INICIAL);
+        Curso miCurso= Curso.Instancia("Programacion Anvanzada I", LocalDate.MAX, Nivel.INICIAL);
         CrearCursoUseCase crearCursoUseCase = new CrearCursoUseCase(crearCursoRepositorio);
 
 
@@ -38,7 +38,7 @@ public class CrearCursoUnitTest {
 
     @Test
     public void crearCurso_CursoExistente_CursoExisteExcetion() {
-        Curso miCurso= Curso.Instancia("Progamacion Avanzada I",LocalDate.of(2030,7,3), Nivel.INICIAL);
+        Curso miCurso= Curso.Instancia("Progamacion Avanzada I",LocalDate.MAX, Nivel.INICIAL);
         CrearCursoUseCase crearCursoUseCase = new CrearCursoUseCase(crearCursoRepositorio);
 
         when(crearCursoRepositorio.existe(miCurso)).thenReturn(true);
@@ -48,7 +48,7 @@ public class CrearCursoUnitTest {
 
     @Test
     public void crearCurso_ErrorAlGuardarCurso_CursoGuardadoExcetion() {
-        Curso miCurso= Curso.Instancia("Progamacion Avanzada I",LocalDate.of(2030,7,3), Nivel.INICIAL);
+        Curso miCurso= Curso.Instancia("Progamacion Avanzada I",LocalDate.MAX, Nivel.INICIAL);
         CrearCursoUseCase crearCursoUseCase = new CrearCursoUseCase(crearCursoRepositorio);
 
         when(crearCursoRepositorio.existe(miCurso)).thenReturn(false);
